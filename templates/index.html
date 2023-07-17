@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FEDSIMPedia</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <style>
+    /* Style for the search bar */
+    #search-bar {
+      width: 50%; /* Make the search bar take the full width of its container */
+      font-size: 20px; /* Increase the font size for better visibility */
+      padding: 5px; /* Add some padding to improve appearance */
+      background-color: floralwhite; /* Change the background color to blue */
+      color: black; /* Change the text color to white for better contrast */
+      border: 2px dimgray; /* Add a blue border to the search bar */
+      border-radius: 5px; /* Round the corners of the search bar */
+    }
+    .material-symbols-outlined {
+      font-size: 60px; /* Increase the font size to make the symbol bigger */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>FEDSIMPedia
+  <span class="material-symbols-outlined">
+menu_book
+</span>
+</h1>
+    <input type="text" id="search-bar" placeholder="Search...">
+  </header>
+
+
+  <main>
+
+    <section id="glossary">
+      <ul id="glossary-list">
+        <!-- Glossary terms and definitions will be dynamically added here -->
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Test Website BI Team. All rights reserved.
+  </footer>
+
+  <script>
+    // Replace glossaryData with your actual glossary data
+    const glossaryData = [
+      { term: "Active Status",
+          definition: "A status of award in ASSIST. It is active until fully closed out." },
+      { term: "Activity Address Code (ACC)",
+          definition: "A distinct six-position code consisting of a combination of alpha and/pr numeric characters assigned to identify specific agency offices, units, activies, or organizations." },
+      { term: "Agency Location Code (ACC)",
+          definition: "undefined." },
+      { term: "Available Balance",
+          definition: "Funds not yet committed to any line items - it is not on a SCLI (for fee) and it's not on an in-progress mod. (Total Funded - Committed - Certified - Obligated - Total Service Charges Billed)" },
+      { term: "Award",
+          definition: "A unique identifier for a specific award at the reporting level. Is a contract, can be an order or IDV." },
+      { term: "Billing Office Address Code (BOAC)",
+          definition: "Billing Office Address Code (BOAC) is a six character code that is 'short-hand' for a unique combination of Agency Bureau Code + Billing address + Agency Location Code (ALC) (where the ALC is an 8 digit 'account number' in Treasury's IPAC system)."},
+      { term: "BPA",
+          definition: "A Blanket Purchase Agreement, or BPA, is a vehicle which simplifies the acquisitions process by allowing a contracting officer to set aside a budget for a specific scope of goods or services for a specific term. These terms are typically shorter than an IDIQ, the budget is finite and purchase orders will fall below the simplified acquisition threshold. " },
+      { term: "Call Order",
+          definition: "A call against an existing blanket purchase agreement to request a service or product provided under the established agreement." },
+      { term: "Certified",
+          definition: "The amount of funding in the 'certified' state on in in-process Mod. Funding won't sit here for long since PMs will generally proceed with awarding a mod which moves it to the next step" },
+      { term: "Continuous Learning Points (CLPs)",
+          definition: "Continuous Learning Points (CLPs) are units of continuing education that are required to keep acquisition and project management professionals current on their FAC certifications." },
+      { term: "Committed",
+          definition: "The amount of funding committed to deliverable line items (like on in-process Mods) + the amount committed to service charge line items (funding on the SCLI, but not yet billed)." },
+      { term: "Competition Rate",
+          definition: `Competition leads to lower prices. GSA has a Competition Rate goal of 90%. Meaning, we want to compete no less than 90% of our annual obligations. In order to determine the level of competition we use FPDS-NG. Field '10A | Extent Competed' is the code that represents the competitive nature of the contract. We also use '10R - Fair Opportunity Given' when the action is an order off a multiple-award contract. The following actions are considered 'Competed' when:<br><br>
+                        10A Extent Competed = Full and Open Competition, Full and Open Competition after exclusion of sources, Competed under SAP OR Competitive Delivery Order AND<br>
+                        10R Fair Opportunity = Fair Opportunity Given, Competitive Set Aside, Null or Blank. We considered a transaction 'Not Competed | Mandatory' if the reason for an award was reported in the Federal Procurement Data System (FPDS).`
+                      },
+      { term: "Contract",
+          definition: "A mutually binding legal relationship obligating the seller to furnish the supplies or services (including construction) and the buyer to pay for them. It includes all types of commitments that obligate the Government to an expenditure of appropriated funds and that, except as otherwise authorized, are in writing. Orders can be contracts, but not all contracts can be orders. Awards can be contracts, but not all awards are contracts in the administrative definition of the word. Can be a stand alone open market award. A contract is an award instrument." },
+      { term: "Contract Balance",
+          definition: "Obligated - Contract Billed" },
+      { term: "Contract Billed",
+          definition: "The amount of funding invoiced for and paid out" },
+      { term: "Contract Line Item Number",
+          definition: "CLIN- Line item in ASSIST that is for deliverables" },
+      { term: "Cost",
+          definition: "Tied to service charge line items, but not usually billed. Usually a labor or travel tracking instance for contract management purposes." },
+      { term: "Critical Path",
+          definition: "The longest path (in time) from start to finish, indicates the minimum time necessary to complete in entirety" },
+      { term: "Dashboard",
+          definition: "A visual display of data that is intended to be interacted with and provides at-a glance answers." },
+      { term: "Delivery Order",
+          definition: "A contract for supplies that does not procure or specify a firm quantity of supplies (other than a minimum or maximum quantity) and that provides for the issuance of orders for the delivery of supplies during the period of the contract. Placed against an established contract." },
+      { term: "Duty Station",
+          definition: "The official work address to which an employee is assigned." },
+      { term: "Effective Competition Rate",
+          definition: "GSA expects actions classified as 'Competed' to actually receive more than one bid or offer.  An action is considered to be Effectively Competed if the action was competed AND it received more than one offer or bid. Effective Competition Rate = (Competed action dollars that received more than one-bid) divided by the [ total dollars obligated in FPDS (obligations and de-obligations) minus 'Not Competed - Mandatory Obligations'." },
+      { term: "Expired",
+          definition: "A status of award in ASSIST. It is not closed out, but past the period of performance completion." },
+      { term: "Federal Awardee Performance and Integrity Information Systems (FAPIIS) Compliance Rate",
+          definition: "Divide the number of terminations for default or cause reported in FAPIIS by the number of terminations for default or cause in the Contract Termination for Default or Cause Report in FPDS.  If the Contract Termination for Default or Cause Report does not identify any terminations, the agency is considered 100% compliant. \n" },
+      { term: "Federal Procurement Data Systems (FPDS)",
+          definition: "undefined." },
+      { term: "Financial Identification Number (FIN)",
+          definition: "Financial Identification Number (FIN), previously ACT number. System generated unique number that represents all related financial activity" },
+      { term: "FPDS Timeliness Rate",
+          definition: "Per FAR 4.604(b)(2), Contracting Officers are required to enter data into FPDS within 3 days of contract award. This calculation determines if the CO had their entry approved in FPDS within 3 business days of contract signature. The calculation, accounting for business days, is:\n" +
+              "Timeliness = [(Number of Actions Approved in a Timely Manner (FPDS Approved Date) - (FPDS Date Signed)] - (non-business days between dates))/Total Number of Actions'\n" },
+      { term: "Funding ID #",
+          definition: "Unique number of the funding document, provided by the client agency. MIPR for DoD clients." },
+      { term: "Governance",
+          definition: "A system of decision rights and accountabilities for information-related processes, executed according to agreed-upon models which describe who can take what actions with what information, and when, under what circumstances, using what methods. Defines roles, responsibilities, and processes for ensuring accountability for and ownership of data assets across the enterprise." },
+      { term: "Government-Wide Acquisition Contract (GWAC)",
+          definition: "Government-Wide Acquisition Contract (GWAC) is a type of contact in which multiple Government agencies align their needs and purchase a contract for good and services. This type of contract allows for economies of scale in order to reduce per unit costs. GWACs consolidate purchases as opposed to having each agency enter into an individual contract." },
+      { term: "High-Risk Contract Type Rate",
+          definition: `Divide net total obligations ($) on CR or TM/LH contracts by the net total obligations ($) to get the CR or TM/LH rates.<br><br>
+              There are two high risk contract types: Cost Reimbursable (CR) and Time and Materials / Labor Hour (TM/LH). The total High-Risk Contract Type Rate is simply the CR and TM/LH Dollars combined obligations divided by the total obligations.<br><br>
+              There is no specific goal for high risk contracts. BUT CR and TM/LH contracts generally require more post award management, because these contracts pose a greater risk to the Government. `
+                  },
+      { term: "Indefinite Delivery, Indefinite Quantity (IDIQ)",
+          definition: "Indefinite Delivery, Indefinite quantity (IDIQ) is a type of contract that allows an agency to purchase an undefined quantity/delivery over a set period of time. IDIQs are restricted to use within the awarding agency or sister agencies - meaning they are not 'government wide' vehicles." },
+      { term: "Indefinite Delivery Vehicle (IDV)",
+          definition: "Indefinite Delivery Vehicle (IDV) is awarded to one or more vendors to facilitate the delivery or supply and service orders. Established by an award from the FSS,GWAC,BOA etc. What orders are written off of." },
+      { term: "Income",
+          definition: "FEDSIM Fee, can be scheduled or billed on demand." },
+      { term: "Interagency Agreement",
+          definition: "A written agreement entered into between two Federal Agencies, or major organizational units within an agency, which specifies the goods to be" },
+      { term: "Integrated Project Team (IPT)",
+          definition: "Integrated Project Team. The IPT is a team comprised of representatives from appropriate functional areas working together to ensure that the acquisition runs smoothly, meets the client's requirements, and conforms to all Federal acquisition regulations and policies. (APM, CO, CS, PM, GM, PPM)" },
+      { term: "Labor Category (LCAT)",
+          definition: "undefined" },
+      { term: "Line Item",
+          definition: "How monies tied to an IA are organized. Tied to a project and associated through the IA and project to an Award. Can be service or contract related." },
+      { term: "Line Item Type",
+          definition: "Type of line item, can be different depending on service or contract line item." },
+      { term: "Line of Accounting (LOA)",
+          definition: "Line of accounting is the actual string of accounting code used to IPAC for payment reimbursement" },
+      { term: "LOA Tracking Number",
+          definition: "A unique system generated code for LOA tracking throughout the lifecycle of funds." },
+      { term: "Multi-Agency Contract (MAC)",
+          definition: "Multi-Agency Contract (MAC) is a multiple-award IDIQ with limits on which agencies can use." },
+      { term: "Net Contribution Margin (NCM)",
+          definition: "Net contribution margin (NCM) is FEDSIM Fee minus costs, contribution to overall goal." },
+      { term: "Obligated",
+          definition: "The amount of funding obligated on contract for payment to contractors" },
+      { term: "Office of Human Resource Management (OHRM)",
+          definition: "GSA's Human Resources Office works directly with employees and the FEDSIM Human Capital team. OHRM handles GSA's onboarding, offboarding, benefits, personnel processing, pay/leave, workforce relations, etc. FEDSIM's HR Specialist is Sherin Golden." },
+      { term: "One-Bid Rate for Competitive Actions",
+          definition: `When we compete an acquisition, we expect to receive more than one-bid or offer. GSA has a Competitive One-Bid goal of 15%. Meaning, of all the obligation/dollars we do compete, no more than 15% of those obligations result in only one-bid or offer received.<br><br>
+              Under this metric, orders placed under a single award BPA will adopt the characteristics of the parent IDV for Number of Offers received.<br>
+              In order to calculate our one-bid rate we divide net total dollars competed for orders resulting in one bid ('number of offers received' = 1) by the net total dollars competed (see Competition Rate above). `
+               },
+      { term: "Procurement Administrative Lead Time (PALT)",
+          definition: "Procurement Administrative Lead Time (PALT) is the Section 886 of the National Defence Authorization Act (NDAA) of 2018 defined Procurement Administrative Lead Time as the amount of time from the date on which a solicitation for a contract or task order is issued to the date of an initial award of the contract or task order.  For all base awards, add together the number of days between Solicitation Date and Date Signed and divide by the number of transactions. FEDSIM starts at acquisition kick-off." },
+      { term: "Personnel Action Request (PAR)",
+          definition: "undefined" },
+      { term: "Procurement Instrument Identifier (PIID)",
+          definition: "A Procurement Instrument Identifier (PIID) is a unique identifier for each contract, agreement or order. A PIID is a mandatory reporting tool for federal spending, there are many different PiiDs for each milestone that requires unique management." },
+      { term: "Position Description (PD)",
+          definition: "undefined" },
+      { term: "Position Number (PN)",
+          definition: "undefined" },
+      { term: "Project",
+          definition: "The projectization of awards to enable internal measurements and tracking within ASSIST—most notably labor tracking and associated fee. Mandatory and most useful when many to one relationships exist with management style and award." },
+      { term: "Purchase Order",
+          definition: "When issued by the Government, means an offer by the Government to buy supplies or services, including construction and research and development, upon specified terms and conditions, using simplified acquisition procedures." },
+      { term: "Query",
+          definition: "To ask an orderly question, usually within a structured language with the intent of valid and accurate answer" },
+      { term: "Reassignment",
+          definition: "undefined" },
+      { term: "Scope",
+          definition: "The extent of the area or subject matter that something deals with or to which it is relevant. Self identified for tagging, but robust in section C of contracts" },
+      { term: "Script",
+          definition: "A writen code to create business applications that integrate within systems and create automation and rapid application" },
+      { term: "Separation",
+          definition: "The official term for an employee resigning from or transferring out of FEDSIM." },
+      { term: "Service Charge Line Item",
+          definition: "SCLI-Line item in ASSIST that is for internal FEDSIM purposes (travel, labor tracking, fee)" },
+      { term: "Sheet",
+          definition: "A common individual component of larger artifacts, can contain tables, non cleansed data, and visuals" },
+      { term: "Small Business Utilization Rate",
+          definition: `Every year the Small Business Administration (SBA) negotiates Small Business contracting rates with the agencies. GSA has an overall Small Business Utilization Rate Goal of 30% for Fiscal Year 2019.<br><br>
+
+              There are smaller socio-economic goals:<br><br>
+              Small Disadvantaged Businesses (SDB): 5%<br>
+              Woman Owned Small Businesses (WOSB): 5%<br>
+              Service Disabled Veteran Owned Small Businesses (SDVOSB): 3%<br>
+              Historically Underutilized Business Zones (HUBZone): 3%.<br><br>
+
+              Divide net total obligations ($) awarded to small business concerns by the net total obligations ($). `
+               },
+      { term: "Spend Under Management (SUM)",
+          definition: "OMB defines SUM as spend on contracts that meet defined criteria for management and data-sharing maturity. OMB uses the following tiered rating scale to evaluate agency spend:\n" +
+              "Tier 3, Best-in-Class (BIC) Solutions - Dollars obligated on Best-in-Class contracts.\n" +
+              "Tier 2, Multi-Agency Solutions - Dollars obligated on multi-agency contracts that satisfy rigorous standards set for leadership, strategy, data, tools, and metrics.\n" +
+              "Tier 1, Mandatory-Use Agency-Wide Solutions - Dollars obligated on agency-wide contracts with mandatory-use or mandatory-consideration policies, along with standards set for data-sharing and other criteria.\n" +
+              "Tier 0, Spend NOT Aligned to Category Management Principals - Dollars obligated on contracts that do not fit into one of the three tiers above. Agencies should analyze Tier 0 spend to find opportunities for shifting to higher-tier solutions.\n"
+               },
+      { term: "Stakeholder",
+          definition: "A person with an interest or concern in something" },
+      { term: "SUM to Goal",
+          definition: "The SUM to Goal percentage is determined by dividing the amount of SUM spend to date by the SUM Goal. This measure is taken directly from the Government-Wide Category Management Executive Dashboard." },
+      { term: "Task Order",
+          definition: "A contract for services that does not procure or specify a firm quantity of services (other than a minimum or maximum quantity) and that provides for issuance of orders for the performance of tasks during the period of the contract. Placed against an established contract." },
+      { term: "Technical Direction Letter (TDL)",
+          definition: "A Technical Direction Letter (TDL) is a contract mechanism used to direct contractor effort within a contract or task order scope of work and is typically issued with an associated incremental funding action to fund the directed work.  " },
+      { term: "Total Actions",
+          definition: "Total number of actions reported in FPDS. \n" +
+              "Includes all actions: contracts, orders, calls, agreements, modifications, etc. No matter if the action is positive, negative, or zero dollar value. If it was reported in FPDS, then it's considered an 'action'." },
+      { term: "Total Billed",
+          definition: "Contract Billed + Total Service Charges Billed" },
+      { term: "Total Funded",
+          definition: "Funding document amount (MIPR total, or 7600B total)" },
+      { term: "Total Obligations",
+          definition: "Net value of obligations ($) reported in FPDS for a particular time period. Includes new obligations minus the absolute value of de-obligations. Metric can be displayed by FY, Quarter, or Month." },
+      { term: "Total Service Charges Billed",
+          definition: "The amount of FEDSIM fee billed" },
+      { term: "Unassigned Balance",
+          definition: "Funds accepted by GSA, but not yet obligated to a contract or billed as service charge. Funds in 'committed' or 'certified' will be a part of balance, includes balances for funds with in-process actions (on an SCLI but not yet billed, or on an in-process mod)\n" +
+              "- available balance is a subset of unassigned (Total funded-obligated- total service charges billed)" },
+      { term: "Unbilled Balance",
+          definition: "Total Funded - Total Billed" },
+      { term: "Utilization",
+          definition: "A developed calculation to show cost recovery percentages of employees, without penalizing the usage of fringe benefts" },
+      { term: "Visual",
+          definition: "A static image to provide at a glance answers." },
+      { term: "Workbook",
+          definition: "A collection of sheets, usually contains a dashboard or numerous visuals." },
+
+      // Add more glossary terms and definitions as needed
+    ];
+
+    const searchInput = document.getElementById('search-bar');
+    const glossaryList = document.getElementById('glossary-list');
+    let filteredTerms = [];
+
+    // Function to populate glossary with all terms and definitions
+    const populateGlossary = () => {
+      glossaryList.innerHTML = '';
+
+      // Populate glossary with all terms and definitions
+      glossaryData.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<h3>${item.term}</h3><p>${item.definition}</p>`;
+        glossaryList.appendChild(listItem);
+      });
+    };
+
+    // Function to filter and populate glossary based on search input
+    const searchGlossary = () => {
+      const searchTerm = searchInput.value.toLowerCase();
+
+      // Clear previous search results
+      glossaryList.innerHTML = '';
+
+      if (searchTerm !== '') {
+        filteredTerms = glossaryData.filter(item => item.term.toLowerCase().includes(searchTerm));
+      } else {
+        filteredTerms = glossaryData;
+      }
+
+      // Populate glossary with search results
+      filteredTerms.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<h3>${item.term}</h3><p>${item.definition}</p>`;
+        glossaryList.appendChild(listItem);
+      });
+    };
+
+    // Event listener for search input
+    searchInput.addEventListener('input', searchGlossary);
+
+    // Populate glossary with all terms and definitions initially
+    populateGlossary();
+  </script>
+</body>
+</html>

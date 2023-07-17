@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+<body>
+<py-script>
+    print("Hello, World!")
+
+    <b><p>Today is <u><label id='today'></label></u></p></b>
+    <py-script>
+    import datetime as dt
+        pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
+
+    </py-script>
+</body>
+</html>
